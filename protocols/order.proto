@@ -1,0 +1,18 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "/events";
+
+message StartOrderCommand {
+  int32 id = 1;
+  string name = 2;
+  int64 count = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+message EndOrderEvent {
+  int32 id = 1;
+  google.protobuf.Timestamp timestamp = 2;
+}
+
+
