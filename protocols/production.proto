@@ -1,0 +1,33 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "/events";
+
+message ProductionEvent {
+    enum ProductionEventType {
+        COMPONENT_INSERTED = 0;
+        COMPONENT_PROCESSED = 1;
+        COMPONENT_COMPLETED = 2;
+    }
+
+    int32 id = 1;
+    ProductionEventType type = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
+
+message MachineStateEvent {
+    enum MachineStateType {
+        READY = 0;
+        PRODUCTION = 1;
+    }
+
+    int32 id = 1;
+    MachineStateType state = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
+
+message MachineWarningEvent {
+    int32 id = 1;
+    string warning = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
